@@ -8,3 +8,6 @@ features:
     description: "Description of feature 3"
   - name: feature_3a
     description: "Description of feature 3a"
+
+  - name: dance-all
+    description: Dance Language Samples
