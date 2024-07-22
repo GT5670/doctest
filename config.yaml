@@ -6,5 +6,5 @@ features:
     description: "Description of feature 2"
   - name: feature_3
     description: "Description of feature 3"
-  
-
+  - name: feature_3a
+    description: "Description of feature 3a"
