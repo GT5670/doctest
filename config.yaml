@@ -1,6 +1,7 @@
-version: 1.0
+version: 1.1
 features:
   - name: feature_1
-    description: "Description of feature 1"
-  - name: feature_2
-    description: "Description of feature 2"
+    description: "Updated description of feature 1"
+  - name: feature_3
+    description: "Description of feature 3"
+
