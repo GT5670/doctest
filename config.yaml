@@ -4,4 +4,7 @@ features:
     description: "Description of feature 1"
   - name: feature_2
     description: "Description of feature 2"
+  - name: feature_3
+    description: "Description of feature 3"
+  
 
