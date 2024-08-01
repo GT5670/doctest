@@ -1,9 +1,16 @@
-version: 1.1
-features:
-  - name: feature_1
-    description: "Description of feature 1"
-  - name: feature_2
-    description: "Description of feature 2"
-  
-  - name: feature_3
-    description: "Description of feature 3"
+version: 1.2
+parameters:
+  - name: parameter_1
+    description: "Description of parameter 1"
+  - name: parameter_2
+    description: "Description of parameter 2"
+definitions:
+  - name: definition_1
+    description: "Description of definition 1"
+  - name: definition_2
+    description: "Description of definition 2"
+tags:
+  - name: tag_1
+    description: "Description of tag 1"
+  - name: tag_2
+    description: "Description of tag 2"

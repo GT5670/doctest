@@ -1,5 +1,14 @@
 This is a documentation file for our project.
-It includes the following features:
+It includes the following information:
 
-- Feature 1: Description of feature 1
-- Feature 2: Description of feature 2
+Parameters:
+- parameter_1: Description of parameter 1
+- parameter_2: Description of parameter 2
+
+Definitions:
+- definition_1: Description of definition 1
+
+Tags:
+- tag_1: Description of tag 1
+
+Make sure to keep this documentation up to date.
