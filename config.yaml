@@ -9,3 +9,10 @@ definitions:
     description: "Description of definition 1"
   - name: definition_2
     description: "Description of definition 2"
+tags:
+  - name: tag_1
+    description: "Description of tag 1"
+  - name: tag_2
+    description: "Description of tag 2"
+  - name: tag_3
+    description: "Description of tag 3"
