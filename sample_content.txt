@@ -8,6 +8,4 @@ Parameters:
 Definitions:
 - definition_1: Description of definition 1
 
-
-
 Make sure to keep this documentation up to date.
