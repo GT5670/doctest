@@ -14,3 +14,5 @@ tags:
     description: "Description of tag 1"
   - name: tag_2
     description: "Description of tag 2"
+  - name: tag_3
+    description: "Description of tag 3"
