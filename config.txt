@@ -1,61 +1,52 @@
-:_mod-docs-content-type: PROCEDURE
+RHTAP includes the following products:
 
-[id="adding-your-application-to-jenkins_{context}"]
-= (Optional) Adding your application to Jenkins 
+Advanced Cluster Security (ACS): to scan your artifacts for vulnerabilities.
 
-Jenkins, a popular open-source automation server, can significantly streamline your development workflow by automated build, test, and deployment process. Follow the steps in this chapter to integrate your application with Jenkins. Additionally, you selected any other Continuous Integration (CI) provider when building your application, you may skip this chapter.
+Developer Hub: a self-service portal for developers.
 
-.Prerequisites
+OpenShift GitOps: to manage Kubernetes deployments and their infrastructure.
 
-* You must have installed and configured Jenkins in your environment
+OpenShift Pipelines: to enable automation and provide visibility for continuous integration and continuous delivery (CI/CD) of software.
 
-* You must have necessary permissions to create and manage Jenkins jobs.
+Quay.io: a container registry, to store your artifacts.
 
-.Procedure
+Trusted Artifact Signer: to sign and validate the artifacts that RHTAP produces.
 
-. Log in to your Jenkins instance.
+Trusted Profile Analyzer: to deliver actionable information about your security posture.
 
-. From the Jenkins dashboard, select *New item*.
+To see exactly which versions of these products RHTAP supports, reference the compatibility and support matrix in our Release notes.
 
-. Enter a name of your job and select *Pipeline* project. For example, live-jenkins.
-
-. Select *OK* to create the job.
-
-. On the Configure > General page, navigate to the Pipelines section, and from the Definitions drop-down list, select Pipeline script from SCM.
-
-. From the SCM drop-down list, select Git.
-
-. In the Repository URL field, enter the Jenkins' source repository URL. For the Jenkins' source repository URL:
-
-.. On the {RHDHLongName} platform, from the Catalog, select an appropriate application.
-
-.. Go to the *Overview* tab and select *View Source* to open the repository where your application's source code is housed.
-
-. In the Branches to build section, enter **/main*.
-
-. Select *Save*. The system displays the live-jenkins (name of your job) page.
-
-. Select *Build Now*. The system starts the build pipeline wait till a build is complete.
-
-** In the Stage view section, select Pipeline Overview to visualize the Pipeline run.
-
-** Select Pipeline console to review the live logs of each stages of the Pipeline run.
+NOTE
+If you already have an instance of Quay.io or ACS, you can integrate it into your deployment of RHTAP.
 
 
-== Viewing the Jenkins pipeline in your application
-Now that you have integrated your application with Jenkins. You can go ahead and review your application for Jenkins pipeline
 
-. On the {RHDHLongName} platform, from the Catalog, select an appropriate application.
+== Deep dive into {ProductShortName}'s security tools
 
-. Go to the *CI* tab to view the the Jenkins project.
+Ensuring the security of software throughout its development is essential for mitigating potential vulnerabilities. The {ProductShortName} leverages a powerful suite of tools designed to bolster your security measures. Let’s explore how {ProductShortName} utilizes its components — {RHDHShortName}, {RHTASShortName}, and {RHTPAShortName} — to provide a robust defense against security threats.
 
-. For an appropriate pipeline run, from the Actions column, select View icon. The system displays the Pipeline overview with the status of all the stages in the Pipeline run. 
+*{RHDHLongName} ({RHDHShortName})*
 
-. Go to the *CD* tab and select an appropriate card to view the deployment details (for example, commit message, author name, and deployment history) managed by ArgoCD and GitOps.
+* {RHDHLongName} serves as a self-service portal for developers. It streamlines the onboarding process and offers access to a wealth of resources and tools necessary for secure software development. This platform encourages best practices and facilitates the integration of security measures right from the start of the development process.
 
-. Go to the *Topology* tab to visualize your application's deployment within the development namespace.
+*{RHTASLongName} ({RHTASShortName})*
 
-[role="_additional-resources"]
-.Next steps
+* {RHTASLongName} focuses on enhancing software integrity through signature and attestation mechanisms. By ensuring that every piece of code and every artifact is signed and attested, {RHTASShortName} provides a verifiable trust chain that confirms the authenticity and security of the software components being used.
 
-* xref:update-code-and-view-security-insights_{context}[Update code and view security insights]
+*{RHTPALongName} ({RHTPAShortName})*
+
+* {RHTPALongName}, deals with the generation and management of Software Bills of Materials (SBOMs). SBOMs are critical for maintaining transparency and compliance, as they provide a detailed list of all components, libraries, and dependencies included in a software product. {RHTPAShortName} automates the creation of SBOMs, ensuring that stakeholders have accurate and up-to-date information on the software’s composition.
+
+== Leveraging ready-to-use software templates
+
+{ProductShortName} offers ready-to-use software templates, embedding security directly into the development workflow, thus allowing developers to concentrate on innovation while minimizing security related distractions. These ready-to-use software templates are fully customizable, ensuring they meet your organization's unique requirements seamlessly.
+
+Benefit from integrated features right out of the box:
+
+* *{RHACSLongName} ({RHACSShortName}):* Strengthens your deployments against vulnerabilities.
+
+* *Quay:* Provides a secure repository for your container images.
+
+* *Tekton pipelines:* Enables precision in automated deployments.
+
+* *GitOps:* Maintains consistency and automated configuration management.
