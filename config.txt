@@ -1,10 +1,53 @@
-git fetch origin "HACDOCS-1058"
-fatal: couldn't find remote ref HACDOCS-1058
- gtrivedi@gtrivedi-thinkpadt14sgen1  ~/git/gitlab/rhtap   main  fatal: the remote end hung up unexpectedly
-remote: 
-remote: ========================================================================
-remote: 
-remote: rpc error: code = Canceled desc = running upload-pack: user canceled the request
-remote: 
-remote: ========================================================================
-remote: 
+For scans like vulnerability scanning, image signing and attestation to work during the build process you need to add credentials in Jenkins. 
+.Prerequisites
+
+* You must have the necessary permissions to create and manage Jenkins jobs.
+
+* You must have appropriate ACS, Quay, and GitOps credentials.
+* You must have cosign private key, cosign public key, amd cosign password.
+
+
+.Procedure
+
+. Open your Jenkins instance in a web browser and log in with your admin credentials.
+
+. Select on your username at the top right corner of the Jenkins dashboard.
+
+. Select Credentials from the left sidebar.
+
+. Select the appropriate domain where you want to add the credentials. Typically, it’s “Global credentials (unrestricted).
+
+. Select Add credentials.
+
+.. From the Kind drop-down list, select Secret text.
+
+.. Keep the default value in the Scope drop-down list, that is, Global (Jenkins)
+
+.. In the Secret field, enter your ACS api token.
+
+.. In the ID field, enter ROX_API_TOKEN.
+
+.. In the description field, enter the appropriate description for the credentials.
+
+. Repeat Step <.> for the following
+
+For ID
+Enter this
+ROX_CENTRAL_ENDPOINT
+The route to your ACS instance. If you do not provide this, the ACS task in the pipeline will operate as a NOOP.
+GITOPS_AUTH_PASSWORD
+The token that the system uses to update the GitOps repository for the newly built images.
+QUAY_IO_CREDENTIALS
+The quay credentials to push images.
+COSIGN_SECRET_KEY
+
+
+COSIGN_PUBLIC_KEY
+
+
+COSIGN_SECRET_PASSWORD
+
+
+
+
+
