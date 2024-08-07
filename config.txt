@@ -1,1 +1,15 @@
-Once a PR is merged, the app analyses the code changes. Based on the backend logic, which includes mapping of the .yaml file to the .adoc files, it searches for the .adoc files that might contain the content related to the code changes. If multiple code files are changed, we can have multiple doc files which the system analyses and displayed at the same time. If it identifies a gap or missing content based on the LLM we have used, it highlights the gap and offers suggestions. These suggestions are based on t he document flow, the style in which the doc is written, and other relevant factors.
+.Prerequisites
+
+* You have used the forked repository URL from link:https://github.com/redhat-appstudio/tssc-sample-templates[tssc-sample-templates] during the {ProductShortName} install process.
+
+* You have already forked and cloned the https://github.com/redhat-appstudio/tssc-sample-jenkins.git[tssc-sample-jenkins] pipeline template.
+
+* You must ensure your forked version is well up to date and in sync with the upstream repository.
+
+.Procedure
+
+. Clone your forked `tssc-sample-templates` repository, and then open it in your preferred text editor, such as Visual Studio Code.
+
+. For Jenkins only: Navigate to *skeleton > ci > jenkins* and open *Jenkinsfile*. Replace the `remote` URL with the URL of your forked repository. For example, remote: 'https://github.com/<username>/tssc-sample-jenkins.git'.
+
+.. If your Jenkins is non local OpenShift, and your REKOR_HOST and TUF_MIRROR are on different clusters, you must update the corresponding URLs for the REKOR_HOST and TUF_MIRROR by going to *skeleton > ci > jenkins > rhtap* and opening *env.sh*.
