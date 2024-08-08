@@ -1,15 +1,1 @@
-.Prerequisites
-
-* You have used the forked repository URL from link:https://github.com/redhat-appstudio/tssc-sample-templates[tssc-sample-templates] during the {ProductShortName} install process.
-
-* You have already forked and cloned the https://github.com/redhat-appstudio/tssc-sample-jenkins.git[tssc-sample-jenkins] pipeline template.
-
-* You must ensure your forked version is well up to date and in sync with the upstream repository.
-
-.Procedure
-
-. Clone your forked `tssc-sample-templates` repository, and then open it in your preferred text editor, such as Visual Studio Code.
-
-. For Jenkins only: Navigate to *skeleton > ci > jenkins* and open *Jenkinsfile*. Replace the `remote` URL with the URL of your forked repository. For example, remote: 'https://github.com/<username>/tssc-sample-jenkins.git'.
-
-.. If your Jenkins is non local OpenShift, and your REKOR_HOST and TUF_MIRROR are on different clusters, you must update the corresponding URLs for the REKOR_HOST and TUF_MIRROR by going to *skeleton > ci > jenkins > rhtap* and opening *env.sh*.
+I still the remember the day your interviewed me. It was so nice to talk to you. And today we are here, I'm sad to see you go. But happy at the same time for your future endeavours. It was awesome to work with you and feel the difference you made at Red Hat.  is so lucky to have you.
