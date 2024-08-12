@@ -1,1 +1,2 @@
 
+OPL uses SQLAlchemy for input and output validation and WT-forms for form validation. The secure session management used `flask-session`an inbuilt.
