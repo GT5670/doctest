@@ -1,131 +1,25 @@
-Running with gitlab-runner 16.9.1 (782c6ecb)
-  on gitlab-runner5.cee.prod.upshift.rdu2.redhat.com-docker hw-tqxRB, system ID: s_61b588696f6b
-Resolving secrets
-00:00
-Preparing the "docker" executor
-00:01
-Using Docker executor with image sonarsource/sonar-scanner-cli:latest ...
-WARNING: Container based cache volumes creation is disabled. Will not create volume for "/cache"
-Authenticating with credentials from /root/.docker/config.json
-Pulling docker image sonarsource/sonar-scanner-cli:latest ...
-Using docker image sha256:28ccb3e6dcd60822ea19a882cd9b47f204326ab78235403847ea5737491e8281 for sonarsource/sonar-scanner-cli:latest with digest sonarsource/sonar-scanner-cli@sha256:0bc49076468d2955948867620b2d98d67f0d59c0fd4a5ef1f0afc55cf86f2079 ...
-Preparing environment
-00:01
-Updating CA certificates...
-WARNING: ca-cert-ca.pem does not contain exactly one certificate or CRL: skipping
-Running on runner-hw-tqxrb-project-83725-concurrent-0 via gitlab-runner5.cee.prod.upshift.rdu2.redhat.com...
-Getting source from Git repository
-00:02
-Fetching changes...
-Initialized empty Git repository in /builds/ccs-data-projects/opl-ui/.git/
-Created fresh repository.
-Checking out 124edff5 as detached HEAD (ref is master)...
-Skipping Git submodules setup
-Restoring cache
-00:01
-Checking cache for 124edff5-protected...
-WARNING: file does not exist                       
-Failed to extract cache
-Executing "step_script" stage of the job script
-00:02
-Using docker image sha256:28ccb3e6dcd60822ea19a882cd9b47f204326ab78235403847ea5737491e8281 for sonarsource/sonar-scanner-cli:latest with digest sonarsource/sonar-scanner-cli@sha256:0bc49076468d2955948867620b2d98d67f0d59c0fd4a5ef1f0afc55cf86f2079 ...
-$ sonar-scanner -Dsonar.ssl.verifyServerCertificate=false -Dsonar.verbose=true
-INFO: Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
-INFO: Project root configuration file: /builds/ccs-data-projects/opl-ui/sonar-project.properties
-13:01:59.391 INFO: SonarScanner 5.0.1.3006
-13:01:59.412 INFO: Java 17.0.11 Alpine (64-bit)
-13:01:59.412 INFO: Linux 3.10.0-1160.118.1.el7.x86_64 amd64
-13:01:59.674 DEBUG: keyStore is : 
-13:01:59.674 DEBUG: keyStore type is : pkcs12
-13:01:59.674 DEBUG: keyStore provider is : 
-13:01:59.675 DEBUG: init keystore
-13:01:59.675 DEBUG: init keymanager of type SunX509
-13:01:59.981 DEBUG: Create: /builds/ccs-data-projects/opl-ui/.sonar/cache
-13:01:59.988 INFO: User cache: /builds/ccs-data-projects/opl-ui/.sonar/cache
-13:01:59.988 DEBUG: Create: /builds/ccs-data-projects/opl-ui/.sonar/cache/_tmp
-13:01:59.991 DEBUG: Extract sonar-scanner-api-batch in temp...
-13:01:59.996 DEBUG: Get bootstrap index...
-13:01:59.997 DEBUG: Download: https://sonarqube.corp.redhat.com/batch/index
-13:02:00.253 ERROR: SonarQube server [https://sonarqube.corp.redhat.com] can not be reached
-13:02:00.254 INFO: ------------------------------------------------------------------------
-13:02:00.254 INFO: EXECUTION FAILURE
-13:02:00.254 INFO: ------------------------------------------------------------------------
-13:02:00.254 INFO: Total time: 0.936s
-13:02:00.307 INFO: Final Memory: 7M/56M
-13:02:00.307 INFO: ------------------------------------------------------------------------
-13:02:00.307 ERROR: Error during SonarScanner execution
-org.sonarsource.scanner.api.internal.ScannerException: Unable to execute SonarScanner analysis
-	at org.sonarsource.scanner.api.internal.IsolatedLauncherFactory.lambda$createLauncher$0(IsolatedLauncherFactory.java:85)
-	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
-	at org.sonarsource.scanner.api.internal.IsolatedLauncherFactory.createLauncher(IsolatedLauncherFactory.java:74)
-	at org.sonarsource.scanner.api.internal.IsolatedLauncherFactory.createLauncher(IsolatedLauncherFactory.java:70)
-	at org.sonarsource.scanner.api.EmbeddedScanner.doStart(EmbeddedScanner.java:185)
-	at org.sonarsource.scanner.api.EmbeddedScanner.start(EmbeddedScanner.java:123)
-	at org.sonarsource.scanner.cli.Main.execute(Main.java:74)
-	at org.sonarsource.scanner.cli.Main.main(Main.java:62)
-Caused by: java.lang.IllegalStateException: Fail to get bootstrap index from server
-	at org.sonarsource.scanner.api.internal.BootstrapIndexDownloader.getIndex(BootstrapIndexDownloader.java:42)
-	at org.sonarsource.scanner.api.internal.JarDownloader.getScannerEngineFiles(JarDownloader.java:58)
-	at org.sonarsource.scanner.api.internal.JarDownloader.download(JarDownloader.java:53)
-	at org.sonarsource.scanner.api.internal.IsolatedLauncherFactory.lambda$createLauncher$0(IsolatedLauncherFactory.java:76)
-	... 7 more
-Caused by: javax.net.ssl.SSLHandshakeException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
-	at java.base/sun.security.ssl.Alert.createSSLException(Alert.java:131)
-	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:378)
-	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:321)
-	at java.base/sun.security.ssl.TransportContext.fatal(TransportContext.java:316)
-	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1351)
-	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.onConsumeCertificate(CertificateMessage.java:1226)
-	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.consume(CertificateMessage.java:1169)
-	at java.base/sun.security.ssl.SSLHandshake.consume(SSLHandshake.java:396)
-	at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:480)
-	at java.base/sun.security.ssl.HandshakeContext.dispatch(HandshakeContext.java:458)
-	at java.base/sun.security.ssl.TransportContext.dispatch(TransportContext.java:201)
-	at java.base/sun.security.ssl.SSLTransport.decode(SSLTransport.java:172)
-	at java.base/sun.security.ssl.SSLSocketImpl.decode(SSLSocketImpl.java:1510)
-	at java.base/sun.security.ssl.SSLSocketImpl.readHandshakeRecord(SSLSocketImpl.java:1425)
-	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:455)
-	at java.base/sun.security.ssl.SSLSocketImpl.startHandshake(SSLSocketImpl.java:426)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.RealConnection.connectTls(RealConnection.java:336)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.RealConnection.establishProtocol(RealConnection.java:300)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.RealConnection.connect(RealConnection.java:185)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.ExchangeFinder.findConnection(ExchangeFinder.java:224)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.ExchangeFinder.findHealthyConnection(ExchangeFinder.java:108)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.ExchangeFinder.find(ExchangeFinder.java:88)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.Transmitter.newExchange(Transmitter.java:169)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.connection.ConnectInterceptor.intercept(ConnectInterceptor.java:41)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.cache.CacheInterceptor.intercept(CacheInterceptor.java:94)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.BridgeInterceptor.intercept(BridgeInterceptor.java:93)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RetryAndFollowUpInterceptor.intercept(RetryAndFollowUpInterceptor.java:88)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:142)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.internal.http.RealInterceptorChain.proceed(RealInterceptorChain.java:117)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.RealCall.getResponseWithInterceptorChain(RealCall.java:221)
-	at org.sonarsource.scanner.api.internal.shaded.okhttp.RealCall.execute(RealCall.java:81)
-	at org.sonarsource.scanner.api.internal.ServerConnection.callUrl(ServerConnection.java:115)
-	at org.sonarsource.scanner.api.internal.ServerConnection.downloadString(ServerConnection.java:99)
-	at org.sonarsource.scanner.api.internal.BootstrapIndexDownloader.getIndex(BootstrapIndexDownloader.java:39)
-	... 10 more
-Caused by: sun.security.validator.ValidatorException: PKIX path building failed: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
-	at java.base/sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:439)
-	at java.base/sun.security.validator.PKIXValidator.engineValidate(PKIXValidator.java:306)
-	at java.base/sun.security.validator.Validator.validate(Validator.java:264)
-	at java.base/sun.security.ssl.X509TrustManagerImpl.checkTrusted(X509TrustManagerImpl.java:231)
-	at java.base/sun.security.ssl.X509TrustManagerImpl.checkServerTrusted(X509TrustManagerImpl.java:132)
-	at java.base/sun.security.ssl.CertificateMessage$T13CertificateConsumer.checkServerCerts(CertificateMessage.java:1335)
-	... 44 more
-Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
-	at java.base/sun.security.provider.certpath.SunCertPathBuilder.build(SunCertPathBuilder.java:148)
-	at java.base/sun.security.provider.certpath.SunCertPathBuilder.engineBuild(SunCertPathBuilder.java:129)
-	at java.base/java.security.cert.CertPathBuilder.build(CertPathBuilder.java:297)
-	at java.base/sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:434)
-	... 49 more
-13:02:00.310 ERROR: 
-13:02:00.310 ERROR: Re-run SonarScanner using the -X switch to enable full debug logging.
-Cleaning up project directory and file based variables
-00:01
-ERROR: Job failed: exit code 1
+== (Optional) Integrating GitLab 
+
+.Prerequisites
+
+* You must have the necessary permissions to create and manage GitLab jobs.
+
+*  You must have a GitLab API token. You can also integrate your own GitLab host. For that you must have your own GitLab host URL, if you do not provide the GitLab host, the system defaults to gitlab.com.
+
+.Procedure
+
+. In your CLI, make sure you are in the `rhtap-cli` directory.
+
++
+[source,bash]
+--
+$ cd ~/rhtap-cli
+--
+
+. Run the integration command. Replace $API_TOKEN with your GitLab API token, $HOST_URL with you Jenkins instance URL. If you do not have a $HOST_URL, remove this part of the command.
+
++
+[source,bash]
+--
+$ ./bin/rhtap-cli integration gitlab --token="$API_TOKEN" --host="$HOST_URL"
+--
