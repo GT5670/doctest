@@ -1,2 +1,2 @@
-git revert HEAD~4..HEAD
-fatal: cannot lock ref 'HEAD': is at 2dfdefb390c38dd18ca1abb9c3ccdc7492f7c632 but expected 77cb6f4f206122609fb6b9e2cbd0e33f0361b8a8
+smunje1 force-pushed the OBSDOCS-1170 branch from a199424 to 8eacedb 
+5 hours ago
