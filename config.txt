@@ -1,5 +1,5 @@
 Running with gitlab-runner 16.9.1 (782c6ecb)
-  on gitlab-runner4.cee.prod.upshift.rdu2.redhat.com-docker oQ3gasYW, system ID: s_2f17383e361e
+  on gitlab-runner5.cee.prod.upshift.rdu2.redhat.com-docker hw-tqxRB, system ID: s_61b588696f6b
 Resolving secrets
 00:00
 Preparing the "docker" executor
@@ -13,37 +13,47 @@ Preparing environment
 00:01
 Updating CA certificates...
 WARNING: ca-cert-ca.pem does not contain exactly one certificate or CRL: skipping
-Running on runner-oq3gasyw-project-83725-concurrent-0 via gitlab-runner4.cee.prod.upshift.rdu2.redhat.com...
+Running on runner-hw-tqxrb-project-83725-concurrent-0 via gitlab-runner5.cee.prod.upshift.rdu2.redhat.com...
 Getting source from Git repository
 00:02
 Fetching changes...
 Initialized empty Git repository in /builds/ccs-data-projects/opl-ui/.git/
 Created fresh repository.
-Checking out 3489644f as detached HEAD (ref is master)...
+Checking out 124edff5 as detached HEAD (ref is master)...
 Skipping Git submodules setup
 Restoring cache
 00:01
-Checking cache for 3489644f-protected...
+Checking cache for 124edff5-protected...
 WARNING: file does not exist                       
 Failed to extract cache
 Executing "step_script" stage of the job script
-00:01
+00:02
 Using docker image sha256:28ccb3e6dcd60822ea19a882cd9b47f204326ab78235403847ea5737491e8281 for sonarsource/sonar-scanner-cli:latest with digest sonarsource/sonar-scanner-cli@sha256:0bc49076468d2955948867620b2d98d67f0d59c0fd4a5ef1f0afc55cf86f2079 ...
-$ sonar-scanner
+$ sonar-scanner -Dsonar.ssl.verifyServerCertificate=false -Dsonar.verbose=true
 INFO: Scanner configuration file: /opt/sonar-scanner/conf/sonar-scanner.properties
 INFO: Project root configuration file: /builds/ccs-data-projects/opl-ui/sonar-project.properties
-INFO: SonarScanner 5.0.1.3006
-INFO: Java 17.0.11 Alpine (64-bit)
-INFO: Linux 3.10.0-1160.118.1.el7.x86_64 amd64
-INFO: User cache: /builds/ccs-data-projects/opl-ui/.sonar/cache
-ERROR: SonarQube server [https://sonarqube.corp.redhat.com] can not be reached
-INFO: ------------------------------------------------------------------------
-INFO: EXECUTION FAILURE
-INFO: ------------------------------------------------------------------------
-INFO: Total time: 0.754s
-INFO: Final Memory: 7M/80M
-INFO: ------------------------------------------------------------------------
-ERROR: Error during SonarScanner execution
+13:01:59.391 INFO: SonarScanner 5.0.1.3006
+13:01:59.412 INFO: Java 17.0.11 Alpine (64-bit)
+13:01:59.412 INFO: Linux 3.10.0-1160.118.1.el7.x86_64 amd64
+13:01:59.674 DEBUG: keyStore is : 
+13:01:59.674 DEBUG: keyStore type is : pkcs12
+13:01:59.674 DEBUG: keyStore provider is : 
+13:01:59.675 DEBUG: init keystore
+13:01:59.675 DEBUG: init keymanager of type SunX509
+13:01:59.981 DEBUG: Create: /builds/ccs-data-projects/opl-ui/.sonar/cache
+13:01:59.988 INFO: User cache: /builds/ccs-data-projects/opl-ui/.sonar/cache
+13:01:59.988 DEBUG: Create: /builds/ccs-data-projects/opl-ui/.sonar/cache/_tmp
+13:01:59.991 DEBUG: Extract sonar-scanner-api-batch in temp...
+13:01:59.996 DEBUG: Get bootstrap index...
+13:01:59.997 DEBUG: Download: https://sonarqube.corp.redhat.com/batch/index
+13:02:00.253 ERROR: SonarQube server [https://sonarqube.corp.redhat.com] can not be reached
+13:02:00.254 INFO: ------------------------------------------------------------------------
+13:02:00.254 INFO: EXECUTION FAILURE
+13:02:00.254 INFO: ------------------------------------------------------------------------
+13:02:00.254 INFO: Total time: 0.936s
+13:02:00.307 INFO: Final Memory: 7M/56M
+13:02:00.307 INFO: ------------------------------------------------------------------------
+13:02:00.307 ERROR: Error during SonarScanner execution
 org.sonarsource.scanner.api.internal.ScannerException: Unable to execute SonarScanner analysis
 	at org.sonarsource.scanner.api.internal.IsolatedLauncherFactory.lambda$createLauncher$0(IsolatedLauncherFactory.java:85)
 	at java.base/java.security.AccessController.doPrivileged(AccessController.java:318)
@@ -114,8 +124,8 @@ Caused by: sun.security.provider.certpath.SunCertPathBuilderException: unable to
 	at java.base/java.security.cert.CertPathBuilder.build(CertPathBuilder.java:297)
 	at java.base/sun.security.validator.PKIXValidator.doBuild(PKIXValidator.java:434)
 	... 49 more
-ERROR: 
-ERROR: Re-run SonarScanner using the -X switch to enable full debug logging.
+13:02:00.310 ERROR: 
+13:02:00.310 ERROR: Re-run SonarScanner using the -X switch to enable full debug logging.
 Cleaning up project directory and file based variables
 00:01
 ERROR: Job failed: exit code 1
