@@ -1,13 +1,10 @@
-= Post-installation integrations
-
-After installing {ProductShortName}, there are a several scenarios that require you to complete some additional work, to ensure {ProductShortName} functions properly.
-
-If you integrated your own instance of Quay into {ProductShortName}, or if you want to use private repositories in Quay, then you must now integrate Quay into ACS. This ensures ACS has access to the repositories you use in Quay.  
-
-Additionally, if you integrated Jenkins into {ProductShortName}, you must configure Jenkins, using the Jenkins UI ensures that Jenkins can run the build pipelines that {ProductShortName} requests. 
-
-Additionally, if you integrated GitLab  into {ProductShortName}, you must configure GitLab, using the GitLab UI ,Webhooks for automated pipeline triggers.
-
-== (Optional) Configuring GitLab Webhooks for automated pipeline triggers
-
-Set up webhooks and secrets in GitLab to automatically trigger pipeline run in {RHDHShortName} upon code updates.
+[cols="1,1"]
+|===
+| **ID**                  | **Secret**                                                                                       
+| `ROX_CENTRAL_ENDPOINT`  | The route to your ACS instance. If this is not provided, the ACS task in the pipeline will operate as a NOOP.
+| `GITOPS_AUTH_PASSWORD`  | The token that the system uses to update the GitOps repository for the newly built images.        
+| `QUAY_IO_CREDENTIALS`   | The Quay credentials to push images.                                                             
+| `COSIGN_SECRET_KEY`     | The signing secret used to sign images and attestations.                                                                         
+| `COSIGN_PUBLIC_KEY`     | The public key used to verify images created by your build pipeline.                                                                          
+| `COSIGN_SECRET_PASSWORD`| The password required to use the signing secret to sign images.                                                                            
+|===
