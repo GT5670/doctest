@@ -1,25 +1,13 @@
-== (Optional) Integrating GitLab 
+= Post-installation integrations
 
-.Prerequisites
+After installing {ProductShortName}, there are a several scenarios that require you to complete some additional work, to ensure {ProductShortName} functions properly.
 
-* You must have the necessary permissions to create and manage GitLab jobs.
+If you integrated your own instance of Quay into {ProductShortName}, or if you want to use private repositories in Quay, then you must now integrate Quay into ACS. This ensures ACS has access to the repositories you use in Quay.  
 
-*  You must have a GitLab API token. You can also integrate your own GitLab host. For that you must have your own GitLab host URL, if you do not provide the GitLab host, the system defaults to gitlab.com.
+Additionally, if you integrated Jenkins into {ProductShortName}, you must configure Jenkins, using the Jenkins UI ensures that Jenkins can run the build pipelines that {ProductShortName} requests. 
 
-.Procedure
+Additionally, if you integrated GitLab  into {ProductShortName}, you must configure GitLab, using the GitLab UI ,Webhooks for automated pipeline triggers.
 
-. In your CLI, make sure you are in the `rhtap-cli` directory.
+== (Optional) Configuring GitLab Webhooks for automated pipeline triggers
 
-+
-[source,bash]
---
-$ cd ~/rhtap-cli
---
-
-. Run the integration command. Replace $API_TOKEN with your GitLab API token, $HOST_URL with you Jenkins instance URL. If you do not have a $HOST_URL, remove this part of the command.
-
-+
-[source,bash]
---
-$ ./bin/rhtap-cli integration gitlab --token="$API_TOKEN" --host="$HOST_URL"
---
+Set up webhooks and secrets in GitLab to automatically trigger pipeline run in {RHDHShortName} upon code updates.
