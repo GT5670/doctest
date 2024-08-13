@@ -1,1 +1,1 @@
-On your terminal, for RHTAP project, you must run init.sh  to ensure that the Jenkins agent has installed git, curl, jq, yq, buildah, syft, cosign, python3, and tree binaries to run RHTAP pipeline. 
+Jenkins agent has installed the necessary binaries - `git`, `curl`, `jq`, `yq`, `buildah`, `syft`, `cosign`, `python3`, and `tree` - required to run the {RHTAPShortName} pipeline. You can verify the binaries after you run a pipeline and if it fails at the very beginning you can review the pipeline run to find the missing binaries.
