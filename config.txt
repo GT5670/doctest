@@ -1,3 +1,17 @@
-`input` is a rego object that contains all of the information about your container image, its signature, and its attestations. `input.attestations` refers to the `attestations` attribute of the `input` object which contains a list of attestations associated with the image. See link:https://enterprisecontract.dev/docs/ec-cli/main/policy_input.html[Policy Input] for more information about where and how {ECShort} defines `input.attestations` contents.
+.Procedure
 
-You can save the `input` object to a JSON file so that you can see what values are available. This is helpful when you write new policy rules. To save the `input` object as a JSON file, called `input.json`, run a command that's similar to the following example:
+. Log in to your Jenkins instance.
+
+. From the Jenkins dashboard, select *New Item*.
+
+. Enter a name for your pipeline job and select *Pipeline* project (for example, secure-jenkins).
+
++
+[NOTE]
+====
+The name of your pipeline job must be the same as the application for which you are adding the Jenkins CI. If the names do not match, the pipeline will run on Jenkins but will not be visible on {RHDHShortName}. 
+====
+
+.. (Optional) If you want to want to use a different pipeline name, update the `jenkins.io/job-full-name` in the `catalog-info.yaml` in the source repo for the pipeline name you decided.
+
+. Select *OK* to create the job.
