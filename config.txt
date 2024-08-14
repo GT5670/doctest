@@ -95,3 +95,98 @@ To better understand how {ProductShortName} works, take a look at the following 
 * For more information about Argo CD, see link:https://argo-cd.readthedocs.io/en/stable/#overview[Argo CD].
 * For more information about Tekton build pipelines, see link:https://tekton.dev/docs/pipelines/[Tekton build pipeline].
 * For more information about Tekton Chains, see link:https://tekton.dev/docs/chains/[Tekton Chains].
+
+
+
+:_mod-docs-content-type: CONCEPT
+
+[id="understanding-rhtap-foundations_{context}"]
+= Understanding {ProductShortName}'s foundations
+
+Discover the robust foundation of {ProductName} ({ProductShortName}), a framework designed to revolutionize cybersecurity practices across the software development lifecycle (SDLC). With {ProductShortName}, you embark on a journey that transcends traditional security measures, integrating cutting-edge solutions and a DevSecOps CI/CD framework from inception to deployment. This proactive strategy accelerates developer onboarding, process acceleration, and the embedding of security from the beginning.
+
+
+== Secure CI/CD framework
+
+Central to {ProductShortName} is its pioneering secure CI/CD framework, designed to uphold the highest standards in software development. By aligning with the Supply-chain Levels for link:https://slsa.dev/spec/v1.0/levels[Software Artifacts (SLSA) level 3], {ProductShortName} ensures that every line of code contributes to a fortress of security, significantly enhancing early vulnerability detection and mitigation.
+
+== Deep Dive into {ProductShortName}'s security tools
+
+Ensuring the security of software throughout its development is essential for mitigating potential vulnerabilities. {ProductShortName} leverages a powerful suite of tools designed to bolster your security measures. Let’s explore how {ProductShortName} utilizes its components to provide a robust defense against security threats.
+
+*{RHTASLongName} ({RHTASShortName})*
+
+* {RHTASLongName} focuses on enhancing software integrity through signature and attestation mechanisms. By ensuring that every piece of code and every artifact is signed and attested, {RHTASShortName} provides a verifiable trust chain that confirms the authenticity and security of the software components being used.
+
+*{RHTPALongName} ({RHTPAShortName})*
+
+* {RHTPALongName} deals with the generation and management of Software Bills of Materials (SBOMs). SBOMs are critical for maintaining transparency and compliance, as they provide a detailed list of all components, libraries, and dependencies included in a software product. {RHTPAShortName} automates the creation of SBOMs, ensuring that stakeholders have accurate and up-to-date information on the software’s composition.
+
+*{RHACSLongName} ({RHACSShortName})*
+
+* {RHACSLongName} strengthens your deployments by scanning your artifacts for vulnerabilities. This proactive approach helps identify and mitigate security issues early in the development process, ensuring that your applications are fortified from inception to deployment.
+
+== Essential platforms and tools
+
+{ProductShortName} integrates with various platforms and tools that enhance the development workflow and support secure, efficient software delivery. These tools provide the infrastructure and automation necessary for a seamless development experience.
+
+*{RHDHLongName} ({RHDHShortName})*
+
+* {RHDHLongName} serves as a self-service portal for developers. It streamlines the onboarding process and offers access to a wealth of resources and tools necessary for secure software development. This platform encourages best practices and facilitates the integration of security measures right from the start of the development process.
+
+*Quay*
+
+* Quay provides a secure repository for your container images. It acts as a reliable harbor for your containerized applications, continuously scanning for vulnerabilities and ensuring that your images remain secure throughout their lifecycle.
+
+*OpenShift GitOps*
+
+* OpenShift GitOps manages Kubernetes deployments and their infrastructure using Git repositories. By maintaining your infrastructure and application configurations in Git, OpenShift GitOps ensures consistent and automated deployment practices, reducing manual errors and enhancing deployment efficiency.
+
+*OpenShift Pipelines*
+
+* OpenShift Pipelines enables automation and provides visibility for continuous integration and continuous delivery (CI/CD) of software. By automating your build, test, and deployment processes, OpenShift Pipelines ensures a streamlined and efficient workflow, accelerating your path to production while maintaining high-quality standards.
+
+== Key Security Practices
+
+{ProductShortName} incorporates these tools to address specific security concerns effectively:
+
+* *Vulnerability Scanning:* With each pull request, {ProductShortName} conducts thorough scans with your CVE scanner of choice, such as Advanced Cluster Security, to identify and address vulnerabilities at the earliest possible stage.
+
+* *SBOM Generation:* {ProductShortName}’s automated generation of SBOMs plays a vital role in maintaining software transparency and compliance. By providing a comprehensive inventory of software components, organizations can better manage and secure their software supply chain.
+
+* *Container Image Security:* {ProductShortName} verifies that container images comply with link:https://slsa.dev/[SLSA (Supply-chain Levels for Software Artifacts)] guidelines. This is achieved through an enterprise contract that includes over 41 rules, ensuring that the container images used in the development process meet stringent security standards.
+
+== Choosing your CI/CD tool
+
+When setting up your CI/CD pipelines with {ProductShortName}, you have the flexibility to choose between Tekton and Jenkins, depending on your specific requirements and preferences.
+
+*Tekton*
+
+* Tekton provides a cloud-native solution for automating the build, test, and deployment processes of your software projects. By managing your CI/CD workflows with a Kubernetes-centric approach, Tekton ensures seamless integration and consistent application delivery. Its declarative pipelines as code allow for flexibility and scalability, enhancing the efficiency and reliability of your development pipeline. With Tekton, you benefit from robust automation and clear visibility into your CI/CD processes, making it an ideal choice for modern cloud-native environments.
+
+*Jenkins*
+
+* Jenkins automates the build, test, and deployment processes of your software projects. By managing your CI/CD workflows, Jenkins ensures consistent and reliable application delivery. Its extensive plugin ecosystem offers flexibility and integration with various tools and technologies, enhancing the efficiency and effectiveness of your development pipeline.
+
+== Leveraging Ready-to-Use Software Templates
+
+{ProductShortName} offers ready-to-use software templates that seamlessly integrate the powerful security tools previously discussed directly into the development workflow, thus allowing developers to concentrate on innovation while minimizing security related distractions. These ready-to-use software templates are fully customizable, ensuring they meet your organization’s unique requirements seamlessly.
+
+== The path forward
+
+Embracing a DevSecOps mindset and utilizing RHTAP promotes a secure and efficient development environment. This ongoing journey of assessment and elevation equips organizations to address both current and future cybersecurity challenges effectively.
+
+[role="_additional-resources"]
+.Next step
+
+* xref:installing-red-hat-trusted-application-pipeline_{context}[Your path to secure application development]
+
+
+[role="_additional-resources"]
+.Additional resources
+
+* For information on {RHDHLongName}, see link:https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.0/html/getting_started_with_red_hat_developer_hub/index[Getting started with {RHDHLongName} guide].
+
+* For information on {RHTASLongName}, see {RHTASShortName} link:https://access.redhat.com/documentation/en-us/red_hat_trusted_artifact_signer/1/html/deployment_guide/index[Deployment] guide.
+
+* For information on {RHTPALongName}, see link:https://access.redhat.com/documentation/en-us/red_hat_trusted_profile_analyzer/2023-q4/html/quick_start_guide/index[Quick Start] guide.
