@@ -1,17 +1,97 @@
-.Procedure
+:_mod-docs-content-type: CONCEPT
+[id="con_about-rhtap_{context}"]
 
-. Log in to your Jenkins instance.
+= About {ProductName}
 
-. From the Jenkins dashboard, select *New Item*.
+Sophisticated applications have complex software supply chains, and the longer a software supply chain is, the more vulnerable it is to attacks of all kinds. Secure every phase of your software development lifecycle with {ProductName} ({ProductShortName}). {ProductShortName} can build, test, deploy, and monitor your source code with secure CI/CD, and its comprehensive set of security tools protects your complete software supply chain.
 
-. Enter a name for your pipeline job and select *Pipeline* project (for example, secure-jenkins).
+.Key {ProductShortName} features
 
-+
-[NOTE]
-====
-The name of your pipeline job must be the same as the application for which you are adding the Jenkins CI. If the names do not match, the pipeline will run on Jenkins but will not be visible on {RHDHShortName}. 
-====
+* Continuously build, test, and deploy container images from your Git source code to a built-in development environment. 
 
-.. (Optional) If you want to want to use a different pipeline name, update the `jenkins.io/job-full-name` in the `catalog-info.yaml` in the source repo for the pipeline name you decided.
+* Ready-to-use templates to start learning and customizing right away.
 
-. Select *OK* to create the job.
+* Build Java, Python, Node, Go, or npm-based apps into container images.
+
+* Access to {RHDHLongName} as your self-serve developer portal.
+
+//| Continuously deploy with GitOps Argo CD for Kubernetes. | X
+
+* Generate, check, and manage your software bill of materials (SBOM).
+
+* Cryptographically sign and attest container image provenance with Tekton chains.
+
+* Verify container image SLSA compliance up to level 3, against more than 40 rules.
+
+* Vulnerabilities scanning with each merge request to identify and address any security threats at the earliest stage possible.
+
+[discrete]
+== Who's the target user? 
+
+If you’re a platform engineer, application developer, or security team member, you’re in the right place. In {ProductName}, you'll find everything you need to install, configure, and customize the internal developer portal to secure your software supply chain across the development lifecycle. 
+//Confirm w/Tanya that "IDP" = "RHDH," then change to latter.
+
+[discrete]
+== How does it work?
+
+{ProductName} ({ProductShortName}) empowers you to streamline and secure your entire DevSecOps CI/CD process.
+
+*Secure development from the onset*
+
+Once {ProductShortName} is installed and configured, access pre-built, secure templates within {RHDHLongName}. Simply select the appropriate ready-to-use software template, fill in the necessary details, and create a new application. This creates a dedicated development environment that includes everything you need: a code repository (source code and GitOps repositories), technical documentation, and a continuous integration/continuous delivery (CI/CD) pipeline.
+
+*Security scans throughout the development lifecycle*
+
+Editing the source code triggers a pipeline run within your application. This pipeline ensures every build artifact is signed and attested for authenticity. It also scans for vulnerabilities in your code and automatically generates Software Bills of Materials (SBOMs). These SBOMs detail all components, libraries, and dependencies included in the container image, providing complete transparency into your application's makeup.
+
+*Review, Refine, and Release*
+
+The pipeline presents any identified vulnerabilities for your review and remediation. You can also review the SBOM to gain a deeper understanding of your application's components. Depending on your promotional workflow, you might advance your application through development, staging, and finally to production. Each promotion triggers another pipeline run, scanning for vulnerabilities and enforcing your Enterprise Contract (EC). The EC ensures that container images meet predefined quality and security standards before release. Should an image fail to meet these criteria, the EC issues a detailed report identifying the necessary corrections.
+
+This streamlined approach with {ProductShortName} allows developers to focus on innovation while upholding the highest security standards throughout the development lifecycle.
+
+To better understand how {ProductShortName} works, take a look at the following descriptive list of the various components and technologies that support and are supported by {ProductShortName}.
+
+.{ProductShortName} technologies and components
+
+[cols="1,1"]
+|=== 
+|Components and technologies|Description
+
+| {RHDHLongName} 
+| {RHDHShortName} gives you access to countless resources and tools for secure software development, so getting started with {ProductShortName} is streamlined and straightforward. {RHDHShortName} encourages best practices and facilitates the integration of security measures from the very start of your development process.
+
+| {RHTASLongName} 
+| {RHTASShortName} enhances software integrity by making sure every piece of your code and all of your artifacts are signed and attested. {RHTASShortName} provides a verifiable trust chain to confirm that all of your software components are safeguarded and authentic.
+
+| {RHTPALongName} 
+| {RHTPAShortName} automates the creation of your software bill of materials (SBOM). SBOMs are critical for maintaining software supply chain transparency and compliance because they provide a detailed list of all components, libraries, and dependencies included in a software product. When you use {RHTPAShortName} to generate and manage your SBOM, you're making sure that all of your stakeholders have accurate and current information about the composition of your software.
+
+| OpenShift 
+| {ProductShortName} uses an OpenShift Container Platform (OCP) cluster for compute resources. OCP also includes a console, which offers various services to standardize workflows and make it easier to securely manage the entire development lifecycle.  
+
+| GitHub 
+| {ProductShortName} automatically starts a build according to the pipeline definition in your pull request (PR). You can also view PR test feedback according to the checks API, and after successful tests, you can set up your PRs to automerge.
+
+| Argo CD 
+| Argo CD from GitOps declares and controls versions of your app definitions, configurations, and environments, and automates and tracks app deployment and lifecycle management.
+
+| Tekton build pipeline 
+| When you build with {ProductShortName}, you store a complete Tekton build pipeline in your repository.
+
+| Tekton Chains 
+| {ProductShortName} can use Tekton Chains to produce a signed build pipeline attestation.
+
+|=== 
+
+[role="_additional-resources"]
+.Additional resources
+
+* For more information about getting started with {ProductShortName}, see link:https://access.redhat.com/documentation/en-us/red_hat_trusted_application_pipeline/1.0/html-single/getting_started_with_red_hat_trusted_application_pipeline[Getting Started with {ProductName}].
+* For more information about {RHDHLongName}, see link:https://access.redhat.com/documentation/en-us/red_hat_developer_hub/1.1[Product Documentation for Red Hat Developer Hub 1.1].
+* For more information about {RHTASLongName}, see link:https://access.redhat.com/documentation/en-us/red_hat_trusted_artifact_signer/1/html-single/deployment_guide[Red Hat Trusted Artifact Signer Deployment guide].
+* For more information about {RHTPALongName}, see link:https://access.redhat.com/documentation/en-us/red_hat_trusted_profile_analyzer[Product Documentation for Red Hat Trusted Profile Analyzer].
+* For more information about OpenShift, see link:https://www.redhat.com/en/technologies/cloud-computing/openshift[OpenShift].
+* For more information about Argo CD, see link:https://argo-cd.readthedocs.io/en/stable/#overview[Argo CD].
+* For more information about Tekton build pipelines, see link:https://tekton.dev/docs/pipelines/[Tekton build pipeline].
+* For more information about Tekton Chains, see link:https://tekton.dev/docs/chains/[Tekton Chains].
