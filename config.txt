@@ -1,1 +1,11 @@
-RHTAP and RHDH are very closely related. Almost all of the work that we do in RHTAP is on RHDH. The only thing to look out for is that RHTAP and RHDH are two different projects and their demand, release cycle, SMEs, and PMs are different. So unless these thing are unified, even if we merge the projects for writers, there will be a clear distinction between the two. Having said that, this can help us getting a bigger picture (how everything is integrated), exposure to new project, and untitaley leading to less resources working on RHTAP and RHDH combined.
+File "/opt/app-root/lib64/python3.11/site-packages/redshift_connector/core.py", line 1774, in execute
+self._send_message(BIND, retval)
+File "/opt/app-root/lib64/python3.11/site-packages/redshift_connector/core.py", line 1787, in _send_message
+self._write(code)
+File "/usr/lib64/python3.11/socket.py", line 724, in write
+return self._sock.send(b)
+^^^^^^^^^^^^^^^^^^
+File "/usr/lib64/python3.11/ssl.py", line 1243, in send
+return self._sslobj.write(data)
+^^^^^^^^^^^^^^^^^^^^^^^^
+ssl.SSLEOFError: EOF occurred in violation of protocol (_ssl.c:2427)
