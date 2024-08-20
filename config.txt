@@ -1,3 +1,5 @@
+DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): sso-taxman.apps.ccstaxman.lab.psi.pnq2.redhat.com:443
+DEBUG:urllib3.connectionpool:https://sso-taxman.apps.ccstaxman.lab.psi.pnq2.redhat.com:443 "GET /auth/realms/RHTest/protocol/saml/descriptor HTTP/1.1" 200 3421
 DEBUG:tzlocal:/etc/localtime found
 DEBUG:tzlocal:1 found:
  {'/etc/localtime is a symlink to': 'Asia/Kolkata'}
@@ -5,41 +7,15 @@ INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly schedul
 INFO:apscheduler.scheduler:Added job "ping_database" to job store "default"
 INFO:apscheduler.scheduler:Scheduler started
 DEBUG:apscheduler.scheduler:Looking for jobs to run
-DEBUG:apscheduler.scheduler:Next wakeup is due at 2024-08-20 14:32:24.412931+05:30 (in 179.998413 seconds)
-DEBUG:urllib3.connectionpool:Starting new HTTPS connection (1): sso-taxman.apps.ccstaxman.lab.psi.pnq2.redhat.com:443
-DEBUG:urllib3.connectionpool:https://sso-taxman.apps.ccstaxman.lab.psi.pnq2.redhat.com:443 "GET /auth/realms/RHTest/protocol/saml/descriptor HTTP/1.1" 200 3421
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2024-08-20 14:42:59.904022+05:30 (in 59.999050 seconds)
  * Debug mode: off
 INFO:werkzeug:WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
  * Running on https://127.0.0.1:5000
 INFO:werkzeug:Press CTRL+C to quit
 DEBUG:apscheduler.scheduler:Looking for jobs to run
-INFO:apscheduler.executors.default:Running job "ping_database (trigger: interval[0:03:00], next run at: 2024-08-20 14:32:24 IST)" (scheduled at 2024-08-20 14:32:24.412931+05:30)
-DEBUG:apscheduler.scheduler:Next wakeup is due at 2024-08-20 14:35:24.412931+05:30 (in 179.999302 seconds)
-ERROR:apscheduler.executors.default:Job "ping_database (trigger: interval[0:03:00], next run at: 2024-08-20 14:35:24 IST)" raised an exception
-Traceback (most recent call last):
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/apscheduler/executors/base.py", line 125, in run_job
-    retval = job.func(*job.args, **job.kwargs)
-             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/git/gitlab/opl-ui/app.py", line 37, in ping_database
-    with db.engine.connect() as connection:
-         ^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask_sqlalchemy/extension.py", line 658, in engine
-    return self.engines[None]
-           ^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask_sqlalchemy/extension.py", line 636, in engines
-    app = current_app._get_current_object()  # type: ignore[attr-defined]
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/werkzeug/local.py", line 508, in _get_current_object
-    raise RuntimeError(unbound_message) from None
-RuntimeError: Working outside of application context.
-
-This typically means that you attempted to use functionality that needed
-the current application. To solve this, set up an application context
-with app.app_context(). See the documentation for more information.
-DEBUG:apscheduler.scheduler:Looking for jobs to run
-DEBUG:apscheduler.scheduler:Next wakeup is due at 2024-08-20 14:38:24.412931+05:30 (in 179.999504 seconds)
-INFO:apscheduler.executors.default:Running job "ping_database (trigger: interval[0:03:00], next run at: 2024-08-20 14:38:24 IST)" (scheduled at 2024-08-20 14:35:24.412931+05:30)
-ERROR:apscheduler.executors.default:Job "ping_database (trigger: interval[0:03:00], next run at: 2024-08-20 14:38:24 IST)" raised an exception
+INFO:apscheduler.executors.default:Running job "ping_database (trigger: interval[0:01:00], next run at: 2024-08-20 14:42:59 IST)" (scheduled at 2024-08-20 14:42:59.904022+05:30)
+DEBUG:apscheduler.scheduler:Next wakeup is due at 2024-08-20 14:43:59.904022+05:30 (in 59.999130 seconds)
+ERROR:apscheduler.executors.default:Job "ping_database (trigger: interval[0:01:00], next run at: 2024-08-20 14:43:59 IST)" raised an exception
 Traceback (most recent call last):
   File "/home/gtrivedi/.local/lib/python3.12/site-packages/apscheduler/executors/base.py", line 125, in run_job
     retval = job.func(*job.args, **job.kwargs)
