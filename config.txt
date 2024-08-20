@@ -1,10 +1,1 @@
-<title>About {ProductName}</title>
-<productname>{ProductName}</productname>
-<productnumber>{ProductRelease}</productnumber>
-<subtitle>Learn . </subtitle>
-<abstract>
-    <para>This document provides .</para>
-</abstract>
-<authorgroup>
-    <orgname>{ProductName} Documentation Team</orgname>
-</authorgroup>
+RHTAP and RHDH are very closely related. Almost all of the work that we do in RHTAP is on RHDH. The only thing to look out for is that RHTAP and RHDH are two different projects and their demand, release cycle, SMEs, and PMs are different. So unless these thing are unified, even if we merge the projects for writers, there will be a clear distinction between the two. Having said that, this can help us getting a bigger picture (how everything is integrated), exposure to new project, and untitaley leading to less resources working on RHTAP and RHDH combined.
