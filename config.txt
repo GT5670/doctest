@@ -1,46 +1,10 @@
-image: ubuntu:latest
+Met with Josef today. Following are the findings from our conversation:
 
-stages:
-  - build
-  - deploy
 
-variables:
-  GIT_STRATEGY: fetch
+1. Setting up GitHub application - This is where things almost always got wrong and team always has too many questions on these. 
 
-before_script:
-  # Update package lists and install dependencies
-  - apt-get update -y || true
-  # Install asciidoctor for AsciiDoc processing and rsync for file operations
-  - apt-get install -y asciidoctor rsync
+2. Tokens - Too many services, and they all require different tokens. So a lot of tokens to use and manage. For example, GitHub - It has different tokens for Organization, Repository, and Personal access. Team is most of the times confused on what tokens to use.
 
-build:
-  stage: build
-  script:
-    # Ensure the build script is executable
-    - chmod +x build.sh
-    # Execute the build script, specifying the current branch name
-    - ./build.sh -b $CI_COMMIT_REF_NAME
-  # Specify the directory where the build output is located as artifacts
-  artifacts:
-    paths:
-      - titles-generated/
-  # Define rules to only run this job for main branch and specific patterns
-  only:
-    - main
-  tags: [docker]
+3. Lots of moving pieces and servcies to track - With many products getting integrated, we have a situation where we have keep track of many moving pieces, to provide a wholesome experience.
 
-pages:
-  stage: deploy
-  script:
-    # Prepare the public directory for GitLab Pages
-    - mkdir -p public
-    # Move the build output to the public directory, ensuring it's ready for GitLab Pages
-    - mv titles-generated/* public/
-  # Define the public directory as artifacts for GitLab Pages
-  artifacts:
-    paths:
-      - public
-  # Ensure this job runs only for the default branch (typically main)
-  only:
-    - main
-  tags: [docker]
+4. Common issues - A document should be there that lists common issues that a user may experience in RHTAP. Testing team has their own version of this doc.
