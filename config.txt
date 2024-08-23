@@ -1,18 +1,1 @@
-Just now the meeting with John concluded.
-Following are the pain points from our conversation:
-
-He echoed the concerns that Josef talked about regarding too many token.
-Customers do not know what to do with the data of TPA, TAS, SBOM when it shows up in the RHTAP.
-He elaboerated point 3 from Josef and went a step furuther - There  are lots of moving pieces, what if a customer wants only SBOM, the customer already had TPA and other things. What about partial install.
-Currentlly, most of the stuff in RHTAP is manual , which as per him is not a good thing (I agree :slightly_smiling_face: ) and he was of the view that as a customer I should not be asked to go and read multiple pages of install doc, rather than use the doc only when I get stuck with the prroduct.
-
-Different products have different customers - The problem is if a customer has quwstion on ACS, and something is not working we ask them to visit that doc. TPA, visit that doc. How can we offer a seamless experience. 
-
-User stories:
-
-Develop a Architecture/Digaram/Content to be included  in the doc:
-Pipeline design - Jenkins and Tekton (How pieces are binded together and what you can do with the data from products that are integrated) What is the value you are getting from TAS, TPA, SBOM in RHTAP and how you can put data to use. SBOM uploaded to TPA, CVE discovwered, what to do with that information.
-All the components put together. Why? What is the need? How you can use the components/products. Before we ask the user to go to individual product guide, what we can offer more in our docs. Here in we can solve the too many token problem as well. This can include Git providers, Registry Providers, CI providers, Support for both, and Token part as discussed.
-Partial install doc - There are scenarios (as per John) where a customer would like to install only pieces not complete RHTAP. And how can you introduce the secure supply chain in your docs.
-Develop a unified experience across products and user roles, who can do what.
-Access DOC - A doc which can help a user to access and dicover where they are in their secure software journey and how RHTAP can help.
+When you review your application'd deployment lifecyle on the CD tab, for a specific environment you can now access a side bar that displays information provided by Argo CD, such as the application status, deployment details, commit message, author of the commit, deployment history and more.
