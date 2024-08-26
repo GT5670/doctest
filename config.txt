@@ -1,1 +1,41 @@
-When you review your application'd deployment lifecyle on the CD tab, for a specific environment you can now access a side bar that displays information provided by Argo CD, such as the application status, deployment details, commit message, author of the commit, deployment history and more.
+Travel Request
+
+Proposed Travel Dates: 	Oct 21, 2024 through Nov 1, 2024 (Tentative)
+
+F2F meeting: 		Connect with the leadership team and fellow team members
+
+Location: 	Pune		
+
+Overview and Agenda:			
+Connect with the leadership team and brainstorm ideas, gain insights and discuss about ContentX, OPL, RHTAP, RapidDoc, and AI. Additionally, connecting with fellow team members to discuss ContentX and AI
+Tentative Budget
+
+Item
+Proposed budget
+Airfare: 
+Rs. 12000
+Other travel (taxis, etc.)
+Rs. 2000
+Lodging 
+(# nights at $/night)
+Rs. 90000
+Per diem
+per GSA 
+NA
+Food (Dinner)
+Rs. 16000
+Total: Rs. 1,20,000
+
+
+
+Business Goals 
+Know in depth about Strategic initiatives
+AI related updates (Contribute to strategic vision)
+Upcoming OKRs
+Visibility
+
+
+
+
+
+
