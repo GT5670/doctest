@@ -1,41 +1,15 @@
-Travel Request
+.Verification
 
-Proposed Travel Dates: 	Oct 21, 2024 through Nov 1, 2024 (Tentative)
+After integrating your application with Jenkins, you can review your application for the Jenkins pipeline on the {RHDHLongName} platform.
 
-F2F meeting: 		Connect with the leadership team and fellow team members
+. From the Catalog, select an appropriate application.
 
-Location: 	Pune		
+. Go to the *CI* tab to view the Jenkins project.
 
-Overview and Agenda:			
-Connect with the leadership team and brainstorm ideas, gain insights and discuss about ContentX, OPL, RHTAP, RapidDoc, and AI. Additionally, connecting with fellow team members to discuss ContentX and AI
-Tentative Budget
+.. For an appropriate pipeline run, from the *Actions* column, select the *View* icon. The system displays the pipeline overview with the status of all the stages in the pipeline run.
 
-Item
-Proposed budget
-Airfare: 
-Rs. 12000
-Other travel (taxis, etc.)
-Rs. 2000
-Lodging 
-(# nights at $/night)
-Rs. 90000
-Per diem
-per GSA 
-NA
-Food (Dinner)
-Rs. 16000
-Total: Rs. 1,20,000
+. Go to the *CD* tab and select an appropriate card to view the deployment details (e.g., commit message, author name, and deployment history) managed by ArgoCD and GitOps.
 
+. Select Catalog, from the Kind dropdown list, select Resource, the system displays jenkins gitops pipelines. Select and review an appropriate GitOps repository.
 
-
-Business Goals 
-Know in depth about Strategic initiatives
-AI related updates (Contribute to strategic vision)
-Upcoming OKRs
-Visibility
-
-
-
-
-
-
+. Go to the *Topology* tab to visualize your application's deployment within the development namespace.
