@@ -1,15 +1,29 @@
-.Verification
+if your Jenkins is on a non-local OpenShift instance, and your Rekor and TUF services are on different clusters, you need to update the `REKOR_HOST` and `TUF_MIRROR` environment variables in the *env.sh* file. This way your external Jenkins server will be able to communicate with Rekor and TUF installed with {ProductShortName}. It'll allow {ProductShortName} to sign container images correctly while running a Jenkins pipeline and avoid this link:https://docs.redhat.com/en/documentation/red_hat_trusted_application_pipeline/1.2/html-single/release_notes_for_red_hat_trusted_application_pipeline_1.2/index#known-issues_default[known issue].
++
+To update the `REKOR_HOST` and `TUF_MIRROR` variables:
++
+.. Go to the *skeleton > ci > jenkins > rhtap* and open *env.sh*. The default values are:
++
+----
+REKOR_HOST=http://rekor-server.rhtap-tas.svc
+TUF_MIRROR=http://tuf.rhtap-tas.svc
+----
++
+.. Replace the `.svc` ending with your OpenShift cluster URL that you run {ProductShortName} on. `.svc` means the local cluster and can be used by internal services but not by your external Jenkins. 
++
+The correct routes of the Rekor and TUF services are printed as part of the installation process of {ProductShortName}. If these data aren’t available to you, run this command and select the Rekor and TUF routes in the output: 
++
+----
+oc get routes -n rhtap-tas
+----
++
+An example of a full Rekor server URL:
++
+----
+http://rekor-server.rhtap-tas.apps.rosa.j6ufg-t3htv-ts6.z797.p3.openshiftapps.com
+----
 
-After integrating your application with Jenkins, you can review your application for the Jenkins pipeline on the {RHDHLongName} platform.
-
-. From the Catalog, select an appropriate application.
-
-. Go to the *CI* tab to view the Jenkins project.
-
-.. For an appropriate pipeline run, from the *Actions* column, select the *View* icon. The system displays the pipeline overview with the status of all the stages in the pipeline run.
-
-. Go to the *CD* tab and select an appropriate card to view the deployment details (e.g., commit message, author name, and deployment history) managed by ArgoCD and GitOps.
-
-. Select Catalog, from the Kind dropdown list, select Resource, the system displays jenkins gitops pipelines. Select and review an appropriate GitOps repository.
-
-. Go to the *Topology* tab to visualize your application's deployment within the development namespace.
++
+.The env.sh file
+image::env.png[]
+Additionally, to enable ACS scans, set the `export DISABLE_ACS` to `false` in *env.sh*.
