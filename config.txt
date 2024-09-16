@@ -1,7 +1,7 @@
 /opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1496
 throw new Error(
 ^
-Error: Failed to instantiate service 'core.httpRouter' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.auth' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.tokenManager' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.tokenManager' because createRootContext threw an error, Error: You must configure at least one key in backend.auth.keys for production.
+Error: Failed to instantiate service 'core.httpRouter' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.auth' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.tokenManager' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.tokenManager' because createRootContext threw an error, TypeError: Invalid type in config for key 'backend.auth.keys[0].secret' in 'env', got number, wanted string
 at /opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1496:17
 at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
 at async _ServiceRegistry.initializeEagerServicesWithScope (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1427:11)
@@ -10,4 +10,3 @@ at async Promise.all (index 0)
 at async BackendInitializer.doStart_fn (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1766:3)
 at async BackendInitializer.start (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1626:5)
 at async BackstageBackend.start (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1894:5)
-Node.js v20.14.0
