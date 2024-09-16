@@ -1,29 +1,13 @@
-if your Jenkins is on a non-local OpenShift instance, and your Rekor and TUF services are on different clusters, you need to update the `REKOR_HOST` and `TUF_MIRROR` environment variables in the *env.sh* file. This way your external Jenkins server will be able to communicate with Rekor and TUF installed with {ProductShortName}. It'll allow {ProductShortName} to sign container images correctly while running a Jenkins pipeline and avoid this link:https://docs.redhat.com/en/documentation/red_hat_trusted_application_pipeline/1.2/html-single/release_notes_for_red_hat_trusted_application_pipeline_1.2/index#known-issues_default[known issue].
-+
-To update the `REKOR_HOST` and `TUF_MIRROR` variables:
-+
-.. Go to the *skeleton > ci > jenkins > rhtap* and open *env.sh*. The default values are:
-+
-----
-REKOR_HOST=http://rekor-server.rhtap-tas.svc
-TUF_MIRROR=http://tuf.rhtap-tas.svc
-----
-+
-.. Replace the `.svc` ending with your OpenShift cluster URL that you run {ProductShortName} on. `.svc` means the local cluster and can be used by internal services but not by your external Jenkins. 
-+
-The correct routes of the Rekor and TUF services are printed as part of the installation process of {ProductShortName}. If these data aren’t available to you, run this command and select the Rekor and TUF routes in the output: 
-+
-----
-oc get routes -n rhtap-tas
-----
-+
-An example of a full Rekor server URL:
-+
-----
-http://rekor-server.rhtap-tas.apps.rosa.j6ufg-t3htv-ts6.z797.p3.openshiftapps.com
-----
-
-+
-.The env.sh file
-image::env.png[]
-Additionally, to enable ACS scans, set the `export DISABLE_ACS` to `false` in *env.sh*.
+/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1496
+throw new Error(
+^
+Error: Failed to instantiate service 'core.httpRouter' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.auth' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.tokenManager' for 'app' because the factory function threw an error, Error: Failed to instantiate service 'core.tokenManager' because createRootContext threw an error, Error: You must configure at least one key in backend.auth.keys for production.
+at /opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1496:17
+at process.processTicksAndRejections (node:internal/process/task_queues:95:5)
+at async _ServiceRegistry.initializeEagerServicesWithScope (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1427:11)
+at async /opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1768:7
+at async Promise.all (index 0)
+at async BackendInitializer.doStart_fn (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1766:3)
+at async BackendInitializer.start (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1626:5)
+at async BackstageBackend.start (/opt/app-root/src/node_modules/@backstage/backend-app-api/dist/index.cjs.js:1894:5)
+Node.js v20.14.0
