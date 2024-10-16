@@ -1,25 +1,16 @@
-<!doctype html>
-<html lang="en">
-{% include 'head.html' %}
-
-<body>
-  <div class="pf-v5-c-page">
-    {% include 'masthead.html' %}
-    {% include 'menu.html' %}
-    <main class="pf-v5-c-page__main" tabindex="-1">
-      <section class="pf-v5-c-page__main-section pf-m-light">
-        {% block heading %}{% endblock %}
-      </section>
-      <section class="pf-v5-c-page__main-section">
-        {% block content %}{% endblock %}
-      </section>
-      {% block footer %}
-      {% endblock %}
-    </main>
-  </div>
-</body>
-
-<script src="{{ url_for('static', filename='scripts/toggle.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/patternfly/4.160.0/patternfly.min.js"></script>
-
-</html>
+DEBUG:redshift_connector.core:field count=2
+DEBUG:redshift_connector.core:[{'table_oid': 35368946, 'column_attrnum': 1, 'type_oid': 1043, 'type_size': -1, 'type_modifier': 259, 'format': 0, 'label': b'brand_opl_partners_partner_id', 'schema_name': b'brand_opl', 'table_name': b'partners', 'column_name': b'partner_id', 'catalog_name': b'rhdsrs', 'nullable': 1, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function text_recv at 0x7fbfadfbf6a0>}, {'table_oid': 35368946, 'column_attrnum': 2, 'type_oid': 1043, 'type_size': -1, 'type_modifier': 259, 'format': 0, 'label': b'brand_opl_partners_partner_name', 'schema_name': b'brand_opl', 'table_name': b'partners', 'column_name': b'partner_name', 'catalog_name': b'rhdsrs', 'nullable': 1, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function text_recv at 0x7fbfadfbf6a0>}]
+DEBUG:redshift_connector.cursor:Cursor.paramstyle=format
+DEBUG:redshift_connector.core:field count=9
+DEBUG:redshift_connector.core:[{'table_oid': 35368702, 'column_attrnum': 1, 'type_oid': 1043, 'type_size': -1, 'type_modifier': 259, 'format': 0, 'label': b'brand_opl_product_product_id', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'product_id', 'catalog_name': b'rhdsrs', 'nullable': 1, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function text_recv at 0x7fbfadfbf6a0>}, {'table_oid': 35368702, 'column_attrnum': 2, 'type_oid': 1043, 'type_size': -1, 'type_modifier': 259, 'format': 0, 'label': b'brand_opl_product_product_name', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'product_name', 'catalog_name': b'rhdsrs', 'nullable': 1, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function text_recv at 0x7fbfadfbf6a0>}, {'table_oid': 35368702, 'column_attrnum': 3, 'type_oid': 1043, 'type_size': -1, 'type_modifier': 65539, 'format': 0, 'label': b'brand_opl_product_product_description', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'product_description', 'catalog_name': b'rhdsrs', 'nullable': 0, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function text_recv at 0x7fbfadfbf6a0>}, {'table_oid': 35368702, 'column_attrnum': 4, 'type_oid': 16, 'type_size': 1, 'type_modifier': -1, 'format': 0, 'label': b'brand_opl_product_upcoming_change', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'upcoming_change', 'catalog_name': b'rhdsrs', 'nullable': 0, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function bool_recv at 0x7fbfadfbf740>}, {'table_oid': 35368702, 'column_attrnum': 5, 'type_oid': 16, 'type_size': 1, 'type_modifier': -1, 'format': 0, 'label': b'brand_opl_product_deprecated', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'deprecated', 'catalog_name': b'rhdsrs', 'nullable': 0, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function bool_recv at 0x7fbfadfbf740>}, {'table_oid': 35368702, 'column_attrnum': 6, 'type_oid': 1043, 'type_size': -1, 'type_modifier': 259, 'format': 0, 'label': b'brand_opl_product_product_status', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'product_status', 'catalog_name': b'rhdsrs', 'nullable': 0, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function text_recv at 0x7fbfadfbf6a0>}, {'table_oid': 35368702, 'column_attrnum': 7, 'type_oid': 1114, 'type_size': 8, 'type_modifier': -1, 'format': 0, 'label': b'brand_opl_product_last_updated', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'last_updated', 'catalog_name': b'rhdsrs', 'nullable': 1, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function timestamp_recv_integer at 0x7fbfadfd8040>}, {'table_oid': 35368702, 'column_attrnum': 8, 'type_oid': 1114, 'type_size': 8, 'type_modifier': -1, 'format': 0, 'label': b'brand_opl_product_created', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'created', 'catalog_name': b'rhdsrs', 'nullable': 1, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function timestamp_recv_integer at 0x7fbfadfd8040>}, {'table_oid': 35368702, 'column_attrnum': 9, 'type_oid': 1043, 'type_size': -1, 'type_modifier': 259, 'format': 0, 'label': b'brand_opl_product_product_status_detail', 'schema_name': b'brand_opl', 'table_name': b'product', 'column_name': b'product_status_detail', 'catalog_name': b'rhdsrs', 'nullable': 0, 'autoincrement': 0, 'read_only': 0, 'searchable': 1, 'redshift_connector_fc': 1, 'func': <function text_recv at 0x7fbfadfbf6a0>}]
+DEBUG:routes.add_routes:Form data received: ImmutableMultiDict([('csrf_token', 'IjM5MGIzYmQ3YWNmNDA1YWVhMzVjMGU4YjAyZTM3ZGExOWIyNjA3Zjci.Zw-ulQ.AYJj-Z0W63C0bSOJLAHN4wCcxlE'), ('product_name', 'Add'), ('product_type', 'cec70d55-aed5-44c7-a8db-7da271288ebe'), ('product_description', ''), ('product_notes', ''), ('product_link', ''), ('link_description', ''), ('product_status', ''), ('product_status_detail', ''), ('alias_name', ''), ('alias_notes', ''), ('alias_type', 'Short'), ('product_release', ''), ('product_release_detail', ''), ('product_release_link', ''), ('product_eol', ''), ('product_eol_detail', ''), ('product_eol_link', ''), ('product_id', ''), ('component_type', ''), ('edit_date', '2024-10-16'), ('edit_notes', ''), ('submit', 'Add product')])
+DEBUG:redshift_connector.cursor:Cursor.paramstyle=format
+ERROR:routes.add_routes:Attempt 1 failed with error: (redshift_connector.error.ProgrammingError) {'S': 'ERROR', 'C': '42501', 'M': 'permission denied for relation product', 'F': '/home/ec2-user/padb/src/pg/src/backend/catalog/aclchk.c', 'L': '3567', 'R': 'aclcheck_error'}
+[SQL: INSERT INTO brand_opl.product (product_id, product_name, product_description, upcoming_change, deprecated, product_status, last_updated, created, product_status_detail) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)]
+[parameters: ('bfbabead-fbba-4d91-9cd5-2e37fa28d746', 'Add', '', False, False, '', datetime.datetime(2024, 10, 16, 17, 46, 47, 215608), datetime.datetime(2024, 10, 16, 17, 46, 47, 215608), '')]
+(Background on this error at: https://sqlalche.me/e/14/f405)
+ERROR:routes.add_routes:Error during form submission: This Session's transaction has been rolled back due to a previous exception during flush. To begin a new transaction with this Session, first issue Session.rollback(). Original exception was: (redshift_connector.error.ProgrammingError) {'S': 'ERROR', 'C': '42501', 'M': 'permission denied for relation product', 'F': '/home/ec2-user/padb/src/pg/src/backend/catalog/aclchk.c', 'L': '3567', 'R': 'aclcheck_error'}
+[SQL: INSERT INTO brand_opl.product (product_id, product_name, product_description, upcoming_change, deprecated, product_status, last_updated, created, product_status_detail) VALUES (%s, %s, %s, %s, %s, %s, %s, %s, %s)]
+[parameters: ('bfbabead-fbba-4d91-9cd5-2e37fa28d746', 'Add', '', False, False, '', datetime.datetime(2024, 10, 16, 17, 46, 47, 215608), datetime.datetime(2024, 10, 16, 17, 46, 47, 215608), '')]
+(Background on this error at: https://sqlalche.me/e/14/f405) (Background on this error at: https://sqlalche.me/e/14/7s2a)
+INFO:werkzeug:127.0.0.1 - - [16/Oct/2024 17:46:50] "POST /opl/add-product HTTP/1.1" 200 -
