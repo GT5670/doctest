@@ -1,5 +1,3 @@
-INFO:werkzeug:127.0.0.1 - - [16/Oct/2024 17:57:54] "GET /static/css/assets/fonts/RedHatText/RedHatText-Medium.woff2 HTTP/1.1" 304 -
-ERROR:app:Exception on /opl/product/1d7470f2-dfa3-4965-9598-8a7e6aa02d76 [GET]
 Traceback (most recent call last):
   File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/app.py", line 2190, in wsgi_app
     response = self.full_dispatch_request()
@@ -13,7 +11,28 @@ Traceback (most recent call last):
   File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/app.py", line 1469, in dispatch_request
     return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)
            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/git/gitlab/opl-ui/routes/view_routes.py", line 191, in view_product_details
-    product_references = product.product_references.all()
-                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-AttributeError: 'InstrumentedList' object has no attribute 'all'
+  File "/home/gtrivedi/git/gitlab/opl-ui/routes/view_routes.py", line 218, in view_product_details
+    return render_template('opl/view.html',
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/templating.py", line 151, in render_template
+    return _render(app, template, context)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/templating.py", line 132, in _render
+    rv = template.render(context)
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/jinja2/environment.py", line 1304, in render
+    self.environment.handle_exception()
+  File "/usr/lib/python3.12/site-packages/jinja2/environment.py", line 939, in handle_exception
+    raise rewrite_traceback_stack(source=source)
+  File "/home/gtrivedi/git/gitlab/opl-ui/templates/opl/view.html", line 1, in top-level template code
+    {% extends 'base.html' %}
+  File "/home/gtrivedi/git/gitlab/opl-ui/templates/base.html", line 33, in top-level template code
+    {% block content %}{% endblock %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/gtrivedi/git/gitlab/opl-ui/templates/opl/view.html", line 83, in block 'content'
+    {% if product.product_notes.first() and product.product_notes.first().product_note %}
+    ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/site-packages/jinja2/utils.py", line 83, in from_obj
+    if hasattr(obj, "jinja_pass_arg"):
+       ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+jinja2.exceptions.UndefinedError: 'sqlalchemy.orm.collections.InstrumentedList object' has no attribute 'first'
