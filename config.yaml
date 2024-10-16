@@ -1,43 +1,432 @@
-flask -e environment run --cert=adhoc
-Traceback (most recent call last):
-  File "/home/gtrivedi/.local/bin/flask", line 8, in <module>
-    sys.exit(main())
-             ^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/cli.py", line 1063, in main
-    cli.main()
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/click/core.py", line 1055, in main
-    rv = self.invoke(ctx)
-         ^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/click/core.py", line 1657, in invoke
-    return _process_result(sub_ctx.command.invoke(sub_ctx))
-                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/click/core.py", line 1404, in invoke
-    return ctx.invoke(self.callback, **ctx.params)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/click/core.py", line 760, in invoke
-    return __callback(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/click/decorators.py", line 84, in new_func
-    return ctx.invoke(f, obj, *args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/click/core.py", line 760, in invoke
-    return __callback(*args, **kwargs)
-           ^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/cli.py", line 911, in run_command
-    raise e from None
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/cli.py", line 897, in run_command
-    app = info.load_app()
-          ^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/cli.py", line 312, in load_app
-    app = locate_app(import_name, None, raise_if_not_found=False)
-          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/cli.py", line 235, in locate_app
-    return find_best_app(module)
-           ^^^^^^^^^^^^^^^^^^^^^
-  File "/home/gtrivedi/.local/lib/python3.12/site-packages/flask/cli.py", line 63, in find_best_app
-    app = app_factory()
-          ^^^^^^^^^^^^^
-  File "/home/gtrivedi/git/gitlab/opl-ui/app.py", line 90, in create_app
-    db.engine = engine
-    ^^^^^^^^^
-AttributeError: property 'engine' of 'SQLAlchemy' object has no setter
+{% extends 'base.html' %}
+
+{% block heading %}
+<h2 class="pf-v5-c-title pf-m-xl">{{ product.product_name }}</h2>
+{% endblock %}
+
+{% block content %}
+{% if product %}
+<div id="product-details">
+
+    <!-- Date information -->
+    <div class="pf-v5-l-flex pf-m-row pf-m-align-items-center pf-m-justify-content-flex-end">
+        <div class="pf-v5-c-card">
+            <div class="pf-v5-c-card__body">
+                <b>Product created on:</b> {{ product.created.strftime('%B %d, %Y') }}<br>
+                <b>Product last updated on:</b> {{ product.last_updated.strftime('%B %d, %Y') }}
+            </div>
+        </div>
+    </div>
+    
+    <!-- Product Information -->
+
+    {% if product.product_name or product_types or product.product_description or portfolios or
+    product.product_notes.first() %}
+    <fieldset class="pf-v5-c-form pf-m-horizontal">
+        <legend class="pf-v5-c-title">Product information</legend>
+
+        {% if product.product_name %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label">
+                <span class="pf-v5-c-form__label-text">Product name</span>
+            </label>
+            <div class="pf-v5-c-form__field-control">
+                {{ product.product_name }}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if product_types %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label"">
+                <span class="pf-v5-c-form__label-text">Product type</span>
+            </label>
+            <div class="pf-v5-c-form__field-control">
+                <ul id="product_types" class="pf-v5-c-list">
+                    {% for product_type in product_types %}
+                    <li>{{ product_type.product_type }}</li>
+                    {% endfor %}
+                </ul>
+        
+            </div>
+        </div>
+        {% endif %}
+
+        {% if product.product_description %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label">
+                            <span class=" pf-v5-c-form__label-text">Product description</span>
+            </label>
+            <div id="product-description-view" class="pf-v5-c-form__field-control">
+                {{ product.product_description | safe }}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if portfolios %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label">
+                <span class="pf-v5-c-form__label-text">Portfolio</span>
+            </label>
+            <div class="pf-v5-c-form__field-control">
+                <div class="pf-v5-c-form__control">
+                    <ul id="portfolios" class="pf-v5-c-list">
+                        {% for portfolio in portfolios %}
+                        <li>{{ portfolio.category_name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if product.product_notes.first() and product.product_notes.first().product_note %}
+            <div class="pf-v5-c-form__field">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Product notes</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                    {{ product.product_notes.first().product_note }}
+                </div>
+            </div>
+        {% endif %}
+    </fieldset>
+    {% endif %}
+
+    <!-- Product Parent/Components Information -->
+
+    {% if sorted_product_components or sorted_child_components %}
+    <fieldset class="pf-v5-c-form pf-m-horizontal">
+        <legend class="pf-v5-c-title">Product taxonomy</legend>
+        <div class="pf-v5-l-grid pf-m-gutter relationship-info">
+            <!-- Product Parent Information -->
+            {% if sorted_product_components %}
+            <div class="pf-v5-l-grid__item pf-m-6-col parent-info">
+                {% for component in sorted_product_components %}
+                {% set component_name = component_product_names[component.product_id] %}
+                {% if component_name %}
+                <p>
+                    {{ component.component_type | capitalize }} of
+                    <a href="{{ url_for('view_routes.view_product_details', product_id=component.product_id) }}">
+                        {{ component_name }}
+                    </a>
+                </p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+    
+            <!-- Child Components -->
+            {% if sorted_child_components %}
+            <div class="pf-v5-l-grid__item pf-m-6-col child-info">
+                <span><b>Contains</b></span>
+                {% for component in sorted_child_components %}
+                {% set child_name = component_product_name[component.component_id] %}
+                {% if child_name %}
+                <p>
+                    <a href="{{ url_for('view_routes.view_product_details', product_id=component.component_id) }}">
+                        {{ child_name }}
+                    </a> ({{ component.component_type }})
+                </p>
+                {% endif %}
+                {% endfor %}
+            </div>
+            {% endif %}
+        </div>
+    </fieldset>
+    {% endif %}
+
+    <!-- Product Reference Information -->
+
+    {% if product_references %}
+    <fieldset class="pf-v5-c-form pf-m-horizontal">
+        <legend class="pf-v5-c-title">Product reference information</legend>
+        <div id="product-references" class="pf-v5-l-grid pf-m-gutter">
+            <div class="pf-v5-l-grid__item pf-m-6-col">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Product reference</span>
+                </label>
+            </div>
+            <div class="pf-v5-l-grid__item pf-m-6-col">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Reference description</span>
+                </label>
+            </div>
+        
+            {% for reference in product_references %}
+            <div class="pf-v5-l-grid__item pf-m-6-col">
+                {% if reference.product_link %}
+                <div class="pf-v5-c-form__field">
+                    <span class="pf-v5-c-form__control product-reference-wrap">
+                        <a href="{{ reference.product_link }}" target="_blank">{{ reference.product_link }}</a>
+                    </span>
+                </div>
+                {% endif %}
+            </div>
+            <div class="pf-v5-l-grid__item pf-m-6-col">
+                {% if reference.link_description %}
+                <div class="pf-v5-c-form__field">
+                    <span class="pf-v5-c-form__control product-reference-wrap">{{ reference.link_description }}</span>
+                </div>
+                {% endif %}
+            </div>
+            {% endfor %}
+        </div>
+        </fieldset>
+    {% endif %}
+
+    <!-- Product Status Details -->
+
+    {% if product.deprecated or product.upcoming_change or product.product_status or product.product_status_detail %}
+    <fieldset class="pf-v5-c-form pf-m-horizontal">
+        <legend class="pf-v5-c-title">Product status information</legend>
+    
+        {% if product.deprecated %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label">
+                <span class="pf-v5-c-form__label-text">Deprecated</span>
+            </label>
+            <div class="pf-v5-c-form__field-control">
+                {{ "Yes" if product.deprecated else "No" }}
+            </div>
+        </div>
+        {% endif %}
+    
+        {% if product.upcoming_change %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label">
+                <span class="pf-v5-c-form__label-text">Upcoming change</span>
+            </label>
+            <div class="pf-v5-c-form__field-control">
+                {{ "Yes" if product.upcoming_change else "No"
+                    }}
+            </div>
+        </div>
+        {% endif %}
+    
+        {% if product.product_status %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label">
+                <span class="pf-v5-c-form__label-text">Status</span>
+            </label>
+            <div class="pf-v5-c-form__field-control">
+                {{ product.product_status }}
+            </div>
+        </div>
+        {% endif %}
+    
+        {% if product.product_status_detail %}
+        <div class="pf-v5-c-form__field">
+            <label class="pf-v5-c-form__label">
+                <span class="pf-v5-c-form__label-text">Status details</span>
+            </label>
+            <div class="pf-v5-c-form__field-control">
+                {{ product.product_status_detail }}
+            </div>
+        </div>
+        {% endif %}
+    </fieldset>
+    {% endif %}
+
+    <!-- Product Alias Information -->
+
+    {% if product_aliases %}
+    <fieldset class="pf-v5-c-form pf-m-horizontal">
+        <legend class="pf-v5-c-title">Product alias information</legend>
+        <p><b>Note:</b> Always use full product name on first use and whenever clarity is needed. After first use, you may
+            use approved short
+            forms or acronyms. Tech docs (technical, customer-facing documentation) refers to non-marketing, non-sales
+            content used
+            to train customers, assist with installation, etc., such as getting started guides, Jira/Bugzilla entries, and
+            support
+            case summaries.</p>
+        <div class="pf-v5-c-table pf-m-grid-md">
+            <!-- Table Headers -->
+            <div class="pf-v5-c-table__header">
+                <div class="pf-v5-c-table__column"><strong>Alias name</strong></div>
+                <div class="pf-v5-c-table__column"><strong>Approved for general use</strong></div>
+                <div class="pf-v5-c-table__column"><strong>Previous name</strong></div>
+                <div class="pf-v5-c-table__column"><strong>Approved for tech docs</strong></div>
+                <div class="pf-v5-c-table__column"><strong>Approved for tech docs code/CLI</strong></div>
+                <div class="pf-v5-c-table__column"><strong>Alias notes</strong></div>
+            </div>
+            <!-- Each Row Represents a Set of Alias Information -->
+            {% for alias in product_aliases %}
+            <div class="pf-v5-c-table__row">
+                <div class="pf-v5-c-table__column">{{ alias.alias_name }}</div>
+                <div class="pf-v5-c-table__column">
+                    {% if alias.alias_approved %}
+                    <strong>Yes</strong>
+                    {% else %}
+                    No
+                    {% endif %}
+                </div>
+                <div class="pf-v5-c-table__column">
+                    {% if alias.previous_name %}
+                    <strong>Yes</strong>
+                    {% else %}
+                    No
+                    {% endif %}
+                </div>
+                <div class="pf-v5-c-table__column">
+                    {% if alias.tech_docs %}
+                    <strong>Yes</strong>
+                    {% else %}
+                    No
+                    {% endif %}
+                </div>
+                <div class="pf-v5-c-table__column">
+                    {% if alias.tech_docs_cli %}
+                    <strong>Yes</strong>
+                    {% else %}
+                    No
+                    {% endif %}
+                </div>
+                <div class="pf-v5-c-table__column">{{ alias.alias_notes or "N/A" }}</div>
+            </div>
+            {% endfor %}
+        </div>
+    </fieldset>
+    {% endif %}
+
+    <!-- Product Release Information -->
+
+    <div class="pf-v5-l-grid pf-m-gutter">
+        {% if product_mkt_life.product_release or product_mkt_life.product_release_detail or
+        product_mkt_life.product_release_link %}
+        <fieldset class="pf-v5-c-form pf-m-horizontal pf-v5-l-grid__item pf-m-6-col">
+            <legend class="pf-v5-c-title">Product release information</legend>
+    
+            {% if product_mkt_life.product_release %}
+            <div class="pf-v5-c-form__field">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Release date</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                {{ product_mkt_life.product_release.strftime('%d %B %Y') }}
+                </div>
+            </div>
+            {% endif %}
+    
+            {% if product_mkt_life.product_release_detail %}
+            <div class="pf-v5-c-form__field">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Release detail</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                    {{ product_mkt_life.product_release_detail }}
+                </div>
+            </div>
+            {% endif %}
+    
+            {% if product_mkt_life.product_release_link %}
+            <div class="pf-v5-c-form__field">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Release reference</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                    <a href="{{ product_mkt_life.product_release_link }}" target="_blank">{{
+                    product_mkt_life.product_release_link }}</a>
+                </div>
+            </div>
+            {% endif %}
+        </fieldset>
+        {% endif %}
+    
+        <!-- Product EOL Information -->
+        {% if product_mkt_life.product_eol or product_mkt_life.product_eol_detail or product_mkt_life.product_eol_link %}
+        <fieldset class="pf-v5-c-form pf-m-horizontal pf-v5-l-grid__item pf-m-6-col">
+            <legend class="pf-v5-c-title">Product end of life information</legend>
+    
+            {% if product_mkt_life.product_eol %}
+            <div class="pf-v5-c-form__field">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Product end of life (EOL) date</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                {{ product_mkt_life.product_eol.strftime('%d %B %Y') }}
+                </div>
+            </div>
+            {% endif %}
+    
+            {% if product_mkt_life.product_eol_detail %}
+            <div class="pf-v5-c-form__field">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Product end of life (EOL) details</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                {{ product_mkt_life.product_eol_detail }}
+                </div>
+            </div>
+            {% endif %}
+    
+            {% if product_mkt_life.product_eol_link %}
+            <div class="pf-v5-c-form__field">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">Product end of life (EOL) reference</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                <a href="{{ product_mkt_life.product_eol_link }}" target="_blank">{{ product_mkt_life.product_eol_link
+                    }}</a>
+                    </div>
+            </div>
+            {% endif %}
+        </fieldset>
+    </div>
+    {% endif %}
+
+    <!-- Product Partners Information -->
+
+    {% if product_partners %}
+    <fieldset class="pf-v5-c-form pf-m-horizontal">
+        <legend class="pf-v5-c-title">Product partners information</legend>
+        <div class="pf-v5-c-form__field">
+            <div class="pf-v5-c-form__group-control">
+                <label class="pf-v5-c-form__label">
+                    <span class="pf-v5-c-form__label-text">In Partnership with</span>
+                </label>
+                <div class="pf-v5-c-form__field-control">
+                    <ul id="product_partners" class="pf-v5-c-list">
+                        {% for partner in product_partners | sort(attribute='partner.partner_name') %}
+                        <li>{{ partner.partner.partner_name }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+    {% endif %}
+
+    <!-- Product Notes Information -->
+
+    {% if product_logs %}
+    <fieldset class="pf-v5-c-form pf-m-horizontal">
+        <legend class="pf-v5-c-title">Notes and changelog</legend>
+        <div id="product-notes" class="pf-v5-c-table pf-m-grid-md">
+            <div class="pf-v5-c-table__header">
+                <div class="pf-v5-c-table__column"><strong>Date</strong></div>
+                <div class="pf-v5-c-table__column"><strong>Notes</strong></div>
+                <div class="pf-v5-c-table__column"><strong>Added By</strong></div>
+            </div>
+            <div class="pf-v5-c-table__body">
+                {% for product_log in product_logs %}
+                <div class="pf-v5-c-table__row">
+                    <div class="pf-v5-c-table__column">{{ product_log.edit_date.strftime('%d %B %Y') }}</div>
+                    <div class="pf-v5-c-table__column">{{ product_log.edit_notes }}</div>
+                    <div class="pf-v5-c-table__column">{{ product_log.username }}</div>
+                </div>
+                {% endfor %}
+            </div>
+        </div>
+    </fieldset>
+    {% endif %}
+    
+</div>
+{% else %}
+<p>No product details available.</p>
+{% endif %}
+<a href="{{ url_for('view_routes.view_products') }}" class="pf-v5-c-button pf-m-primary">View more products</a>
+<a href="{{ url_for('edit_routes.edit_product_details', product_id=product.product_id) }}"
+    class="pf-v5-c-button pf-m-primary">Edit this product</a>
+
+{% endblock %}
